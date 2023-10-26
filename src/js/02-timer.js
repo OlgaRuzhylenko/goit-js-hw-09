@@ -10,6 +10,7 @@ const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
 
 let defaultDate = new Date();
+let intervalId;
 
 function updateDefaultDate() {
     defaultDate = new Date();
@@ -34,7 +35,7 @@ const fp = flatpickr(myInput, {
     defaultDate: defaultDate,
     minuteIncrement: 1,
     onClose(selectedDates) {
-        console.log(selectedDates[0]);
+        // console.log(selectedDates[0]);
         if (selectedDates[0] - defaultDate <= 0) {
             alert('Please choose a date in the future');
             btnStart.setAttribute('disabled', 'true');
@@ -42,20 +43,31 @@ const fp = flatpickr(myInput, {
             btnStart.removeAttribute('disabled');
             btnStart.addEventListener('click', onBtnStartClick);
             function onBtnStartClick() {
-               
-                const intervalId = setInterval(() => {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                };
+
+                this.setAttribute('disabled', 'true')
+                intervalId = setInterval(() => {
                     updateDefaultDate();
                     const ms = selectedDates[0] - defaultDate;
+                  
+                    if (ms <= 500) {
+                        clearInterval(intervalId)
+                    }
                     const result = convertMs(ms);
                     console.log(result);
                     
-                    dataDays.textContent = result.days;
-                    dataHours.textContent = result.hours;
-                    dataMinutes.textContent = result.minutes;
-                    dataSeconds.textContent = result.seconds;
+                    dataDays.textContent = addLeadingZero(result.days);
+                    dataHours.textContent = addLeadingZero(result.hours);
+                    dataMinutes.textContent = addLeadingZero(result.minutes);
+                    dataSeconds.textContent = addLeadingZero(result.seconds);
                 }, 1000);
             }
         }
     }
 }
 );
+function addLeadingZero(value) {
+    return value.toString().padStart(2, '0');
+};
