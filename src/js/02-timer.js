@@ -52,7 +52,7 @@ const fp = flatpickr(myInput, {
                     updateDefaultDate();
                     const ms = selectedDates[0] - defaultDate;
                   
-                    if (ms <= 500) {
+                    if (ms <= 600) {
                         clearInterval(intervalId)
                     }
                     const result = convertMs(ms);
