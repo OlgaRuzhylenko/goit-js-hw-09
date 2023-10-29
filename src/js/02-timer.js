@@ -28,7 +28,7 @@ function convertMs(ms) {
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
     return { days, hours, minutes, seconds };
 } 
- 
+btnStart.setAttribute('disabled', 'true'); 
 const fp = flatpickr(myInput, {
     enableTime: true,
     time_24hr: true,
@@ -38,7 +38,7 @@ const fp = flatpickr(myInput, {
         // console.log(selectedDates[0]);
         if (selectedDates[0] - defaultDate <= 0) {
             alert('Please choose a date in the future');
-            btnStart.setAttribute('disabled', 'true');
+            
         } else {
             btnStart.removeAttribute('disabled');
             btnStart.addEventListener('click', onBtnStartClick);
