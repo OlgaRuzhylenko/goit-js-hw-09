@@ -16,7 +16,7 @@ function onFormSubmit(evt) {
   step = parseInt(delayStepImput.value);
 
   for (let i = 0; i < amount; i += 1) {
-    position = i + 1;
+   const position = i + 1;
 
       function createPromise(position, delay) {
       return new Promise((resolve, reject) => {
