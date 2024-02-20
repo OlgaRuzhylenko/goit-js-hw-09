@@ -1,9 +1,27 @@
 const startBtn = document.querySelector('[data-start]');
-console.log(startBtn);
+const stopBtn = document.querySelector('[data-stop]');
+const body = document.querySelector('body');
+let timerId;
 
-console.log('hello');
+stopBtn.disabled = true;
+startBtn.addEventListener('click', onStartClick);
 
+function onStartClick(evt) {
+  stopBtn.disabled = false;
+  timerId = setInterval(() => {
+    const randomColor = getRandomHexColor(); 
+    body.style.backgroundColor = randomColor;
+  }, 1000);  
+  startBtn.disabled = true;
+}
 
+stopBtn.addEventListener('click', onStopClick);
+
+function onStopClick(evt) {
+  clearInterval(timerId);
+  stopBtn.disabled = true;
+  startBtn.disabled = false;
+}
 
 
 function getRandomHexColor() {
