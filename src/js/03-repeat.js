@@ -1,26 +1,72 @@
 // Підрахунок суми елементів масиву: Напишіть функцію, яка приймає масив чисел і повертає проміс, який вирішується сумою всіх елементів масиву. Можна використати метод масиву reduce() для підрахунку суми.
-const arr = [1, 2, 3, 4, 10];
+// const arr = [1, 2, 3, 4, 10];
 
-function summOfArr(arr) {
-return new Promise((resolve, reject) => {
-    if (arr && arr.length > 0) {
-       const sum = arr.reduce((acc, item) => acc + item, 0);
-        resolve(sum);
-    } else {
-        reject('Error')
-    }
-})
-}
+// function summOfArr(arr) {
+// return new Promise((resolve, reject) => {
+//     if (arr && arr.length > 0) {
+//        const sum = arr.reduce((acc, item) => acc + item, 0);
+//         resolve(sum);
+//     } else {
+//         reject('Error')
+//     }
+// })
+// }
  
-summOfArr(arr)
-    .then((sum) => {
-    console.log(`final sum is ${sum}`);
-}).catch(() => {
-    console.log('sorry');
-})
+// summOfArr(arr)
+//     .then((sum) => {
+//     console.log(`final sum is ${sum}`);
+// }).catch(() => {
+//     console.log('sorry');
+// })
+
+
 
 
 // Пошук максимального елемента в масиві: Напишіть функцію, яка приймає масив чисел та повертає проміс, який вирішується максимальним числом у масиві.
+
+const arr = [1, 5, 3, 4];
+let maxItem;
+
+function createPromise(arr) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (arr || arr.length > 0) {
+                for (let i = 0; i < arr.length; i += 1){
+                    maxItem = Math.max(arr[i]);
+console.log(maxItem);
+                }
+            } else (reject(console.log(err)))
+        }, 500)
+    })
+}
+
+createPromise(arr).then(() => {
+    console.log(item);
+}).catch((err) => {
+    console.log('this is ERROR');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Фільтрація масиву: Напишіть функцію, яка приймає масив чисел та значення, і повертає проміс, який вирішується новим масивом, який містить лише числа з початкового масиву, більші за задане значення.
 
